@@ -7,7 +7,10 @@ import { nbs } from "../../nbs";
 const startServer = async () => {
   const server = await createServer({
     configFile: false,
-    plugins: [react(), createHtmlPlugin({ entry: "src/.nbs/main.ts" })],
+    plugins: [
+      react(),
+      createHtmlPlugin({ entry: "node_modules/.nbs/main.ts" }),
+    ],
     root: process.cwd(),
     resolve: {
       alias: {
