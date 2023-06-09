@@ -5,22 +5,18 @@ import path from "path";
 import { nbs } from "../../nbs";
 
 const startBuild = async () => {
-  async () => {
-    await toBuild({
-      root: process.cwd(),
-      plugins: [
-        react(),
-        createHtmlPlugin({ entry: "node_modules/.nbs/main.ts" }),
-      ],
-      configFile: false,
-      resolve: {
-        alias: {
-          "@": path.resolve(__dirname, "src"),
-          nbs: path.resolve(__dirname, "src/.nbs"),
-        },
+  await toBuild({
+    root: process.cwd(),
+    plugins: [react(), createHtmlPlugin({ entry: "/src/.nbs/main.tsx" })],
+    configFile: false,
+    base: "./",
+    resolve: {
+      alias: {
+        "@": path.resolve(process.cwd(), "src"),
+        nbs: path.resolve(process.cwd(), "src/.nbs"),
       },
-    });
-  };
+    },
+  });
 };
 
 export const build = async () => {

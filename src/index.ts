@@ -1,6 +1,6 @@
 import { cac } from "cac";
 import { pkg } from "./utils";
-import { dev, createApp } from "./commands";
+import { dev, build, preview, createApp } from "./commands";
 
 const cli = cac("nbs");
 
@@ -8,14 +8,14 @@ cli.command("", "start dev server").action(async (files, options) => {
   await dev();
 });
 
-cli.command("build", "build for production").action((files, options) => {
-  console.log("xx", files, options);
+cli.command("build", "build for production").action(async (files, options) => {
+  await build();
 });
 
 cli
   .command("preview", "locally preview production build")
-  .action((files, options) => {
-    console.log(files, options);
+  .action(async (files, options) => {
+    await preview();
   });
 
 cli

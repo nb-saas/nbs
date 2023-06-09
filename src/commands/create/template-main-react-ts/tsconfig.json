@@ -19,7 +19,8 @@
     "paths": {
       "@/*": ["src/*"],
       "nbs": ["src/.nbs"]
-    }
+    },
+    "types": ["@micro-zoe/micro-app"]
   },
   "include": ["src"]
 }

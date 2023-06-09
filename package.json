@@ -3,24 +3,22 @@
   "version": "1.0.0",
   "description": "",
   "scripts": {
-    "build": "unbuild",
+    "build": "unbuild && node scripts/copyTemplate.js",
     "dev": "ts-node src/index.ts"
   },
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "require": "./dist/index.cjs",
-      "import": "./dist/index.mjs"
+      "require": "./dist/index.cjs"
     }
   },
   "main": "./dist/index.cjs",
-  "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
     "dist"
   ],
   "bin": {
-    "nbs": "./dist/index.mjs"
+    "nbs": "./dist/index.cjs"
   },
   "repository": {
     "type": "git",
@@ -34,6 +32,7 @@
   },
   "homepage": "https://github.com/nb-saas/create-nbs#readme",
   "devDependencies": {
+    "@types/express": "^4.17.17",
     "@types/fs-extra": "^11.0.1",
     "@types/node": "^20.2.5",
     "@types/prompts": "^2.4.4",
@@ -44,8 +43,12 @@
   "dependencies": {
     "@vitejs/plugin-react": "^4.0.0",
     "cac": "^6.7.14",
+    "cheerio": "1.0.0-rc.12",
+    "express": "^4.18.2",
     "fs-extra": "^11.1.1",
+    "open": "8.4.0",
     "prompts": "^2.4.2",
+    "undici": "^5.22.1",
     "vite": "^4.3.9",
     "vite-plugin-html": "^3.2.0"
   }

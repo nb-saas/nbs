@@ -1,15 +1,13 @@
 import { preview as toPreview } from "vite";
 
 const startPreview = async () => {
-  async () => {
-    const previewServer = await toPreview({
-      preview: {
-        open: true,
-      },
-    });
+  const previewServer = await toPreview({
+    preview: {
+      open: true,
+    },
+  });
 
-    previewServer.printUrls();
-  };
+  previewServer.printUrls();
 };
 
 export const preview = async () => {

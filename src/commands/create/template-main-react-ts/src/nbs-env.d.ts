@@ -1,1 +1,1 @@
-/// <reference types="vite/client" />
+/// <reference path="./.nbs/env.d.ts" />

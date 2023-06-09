@@ -8,3 +8,5 @@ types
 *.log*
 *.conf*
 *.env*
+nbs-main-app
+nbs-micro-app

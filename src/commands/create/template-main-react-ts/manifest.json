@@ -1,7 +1,7 @@
 {
   "version": "nbs-app/v1.0",
   "appName": "micro-app",
-  "type": "micro-react-ts",
+  "type": "main-react-ts",
   "annotations": {},
   "name": "lang.name",
   "description": "lang.description",
