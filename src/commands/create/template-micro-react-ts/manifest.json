@@ -1,0 +1,24 @@
+{
+  "version": "nbs-app/v1.0",
+  "appName": "micro-app",
+  "type": "web",
+  "annotations": {},
+  "name": "lang.name",
+  "description": "lang.description",
+  "entries": [],
+  "pages": [],
+  "configs": [],
+  "privileges": [],
+  "apis": [],
+  "dependencies": [],
+  "_locales": {
+    "zh": {
+      "name": "中文",
+      "description": "中文描述"
+    },
+    "en": {
+      "name": "English",
+      "description": "English description"
+    }
+  }
+}
