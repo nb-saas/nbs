@@ -7,7 +7,8 @@ import { nbs } from "../../nbs";
 import express from "express";
 import { request } from "undici";
 import open from "open";
-import { processHtmlPath, mf } from "../../utils";
+import { processHtmlPath } from "../../utils";
+import { BFF } from "../../bff";
 
 const startServer = async () => {
   const mf: any = fs.readFileSync(
@@ -45,24 +46,8 @@ const startServer = async () => {
       server: {},
     });
     await server.listen();
-    const app = express();
 
-    app.use(async (req, res, next) => {
-      const url = req.url;
-      if (url.startsWith("/open-api")) {
-        //TODO 接口代理转发
-      } else {
-        const { body } = await request(
-          "https://www.unpkg.com/nbs-main-app@0.0.2/dist/index.html"
-        );
-        const html = await body.text();
-        res.send(processHtmlPath(html));
-      }
-    });
-    app.listen(8000, () => {
-      console.log(`Example app listening on port ${8000}`);
-      open(`http://localhost:8000`);
-    });
+    await BFF();
   }
 };
 
