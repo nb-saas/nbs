@@ -4,10 +4,15 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "node ./nbs-scripts/dev.js",
+    "dev": "nbs dev",
     "build": "tsc &&  node ./nbs-scripts/build.js",
     "preview": "node ./nbs-scripts/preview.js"
   },
+  "files": [
+    "dist/",
+    "package.json",
+    "manifest.json"
+  ],
   "dependencies": {
     "react": "^18.2.0",
     "react-dom": "^18.2.0",

@@ -1,5 +1,5 @@
 import { cac } from "cac";
-import { pkg } from "./utils";
+import { version } from "../package.json";
 import { dev, build, preview, createApp } from "./commands";
 
 const cli = cac("nbs");
@@ -25,5 +25,5 @@ cli
   });
 
 cli.help();
-cli.version(pkg.version);
+cli.version(version);
 cli.parse();

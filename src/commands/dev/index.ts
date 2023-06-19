@@ -9,6 +9,7 @@ import { request } from "undici";
 import open from "open";
 import { processHtmlPath } from "../../utils";
 import { BFF } from "../../bff";
+import portfinder from "portfinder";
 
 const startServer = async () => {
   const mf: any = fs.readFileSync(
@@ -43,11 +44,14 @@ const startServer = async () => {
           nbs: path.resolve(process.cwd(), "src/.nbs"),
         },
       },
-      server: {},
+      server: {
+        port: 3000,
+      },
     });
     await server.listen();
+    server.printUrls();
 
-    await BFF();
+    // await BFF(`http://localhost:${port}`);
   }
 };
 

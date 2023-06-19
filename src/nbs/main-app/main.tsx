@@ -1,14 +1,13 @@
-import React, { FC } from 'react';
-import ReactDOM from 'react-dom/client';
-import { RouterProvider } from 'react-router-dom';
-import 'antd/dist/reset.css';
-import './index.css';
-import './lang';
-import './micro-app';
-import router from './router';
+import React from "react";
+import ReactDOM from "react-dom/client";
+import "antd/dist/reset.css";
+import "./index.css";
+import "./lang";
+import "./micro-app";
+import App from "./App";
 
-ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
+ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <App />
   </React.StrictMode>
 );

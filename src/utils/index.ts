@@ -2,10 +2,6 @@ import fs from "fs";
 import path from "path";
 import * as cheerio from "cheerio";
 
-export const pkg = JSON.parse(
-  fs.readFileSync(path.join(process.cwd(), "package.json"), "utf8")
-);
-
 export const mf = () => {
   return fs.readFileSync(path.join(process.cwd(), "manifest.json"), "utf8");
 };
@@ -24,7 +20,7 @@ export const processHtmlPath = (html: string) => {
       }
       const newUrl = new URL(
         origin,
-        `https://www.unpkg.com/nbs-main-app@0.0.2/dist/`
+        `https://www.unpkg.com/nbs-main-app@0.0.4/dist/`
       ).href;
       $(this).attr(attr, newUrl);
     });

@@ -18,10 +18,12 @@ export const createApp = async () => {
   if (response.appType == "main-app") {
     fs.cpSync(path.join(__dirname, "./template-main-react-ts"), dest, {
       recursive: true,
+      dereference: true,
     });
   } else {
     fs.cpSync(path.join(__dirname, "./template-micro-react-ts"), dest, {
       recursive: true,
+      dereference: true,
     });
   }
   fs.writeJSONSync(

@@ -4,10 +4,15 @@
   "version": "0.0.1",
   "type": "module",
   "scripts": {
-    "dev": "node ./nbs-scripts/dev.js",
+    "dev": "nbs dev",
     "build": "tsc && node ./nbs-scripts/build.js",
     "preview": "node ./nbs-scripts/preview.js"
   },
+  "files": [
+    "dist/",
+    "package.json",
+    "manifest.json"
+  ],
   "dependencies": {
     "@ant-design/icons": "^5.1.4",
     "@micro-zoe/micro-app": "v1.0.0-beta.5",
@@ -17,7 +22,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-i18next": "^12.3.1",
-    "react-router-dom": "^6.11.2"
+    "react-router-dom": "^5.2.0",
+    "axios": "^1.4.0"
   },
   "devDependencies": {
     "@types/node": "^20.2.5",
