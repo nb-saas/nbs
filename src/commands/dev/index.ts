@@ -44,9 +44,6 @@ const startServer = async () => {
           nbs: path.resolve(process.cwd(), "src/.nbs"),
         },
       },
-      server: {
-        port: 3000,
-      },
     });
     await server.listen();
     server.printUrls();
