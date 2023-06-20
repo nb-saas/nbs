@@ -1,12 +1,14 @@
 import express from "express";
 import { request } from "undici";
 import open from "open";
-import { processHtmlPath } from "../utils";
+import fs from "fs-extra";
+import path from "path";
+import { processHtmlPath, injectNBS } from "../utils";
 import { createProxyMiddleware } from "http-proxy-middleware";
 
 const isMock = false;
 
-export const BFF = async (appUrl: string) => {
+export const BFF = async (mainPort: number, microPort: number) => {
   const app = express();
 
   // mock
@@ -37,11 +39,25 @@ export const BFF = async (appUrl: string) => {
     html = processHtmlPath(html);
     console.log("html", html);
     // 2. 获取SaaS信息并注入html
+    const mf = fs.readJSONSync(path.join(process.cwd(), "manifest.json"));
+
+    let name: string = mf.name;
+    if (name.startsWith("lang.")) {
+      name = mf._locales["zh"][name.replace("lang.", "")];
+    }
+    const _NBS = {
+      app: {
+        name: name,
+        url: `http://localhost:${microPort}`,
+      },
+    };
+    html = injectNBS(html, _NBS);
+
     // 3. 做登录操作
     res.send(html);
   });
-  app.listen(8000, () => {
-    console.log(`Example app listening on port ${8000}`);
-    open(`http://localhost:8000`);
+  app.listen(mainPort, () => {
+    console.log(`Example app listening on port ${mainPort}`);
+    open(`http://localhost:${mainPort}`);
   });
 };

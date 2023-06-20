@@ -1,6 +1,7 @@
 import fs from "fs";
 import path from "path";
 import * as cheerio from "cheerio";
+import { inject } from "prompts";
 
 export const mf = () => {
   return fs.readFileSync(path.join(process.cwd(), "manifest.json"), "utf8");
@@ -25,6 +26,13 @@ export const processHtmlPath = (html: string) => {
       $(this).attr(attr, newUrl);
     });
   });
+
+  return $.html();
+};
+
+export const injectNBS = (html: string, _NBS: any) => {
+  const $ = cheerio.load(html);
+  $("head").append($("<script>").text(`window._NBS=${JSON.stringify(_NBS)}`));
 
   return $.html();
 };
