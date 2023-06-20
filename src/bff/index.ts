@@ -5,6 +5,7 @@ import fs from "fs-extra";
 import path from "path";
 import { processHtmlPath, injectNBS } from "../utils";
 import { createProxyMiddleware } from "http-proxy-middleware";
+import { uid } from "uid";
 
 const isMock = false;
 
@@ -32,14 +33,16 @@ export const BFF = async (mainPort: number, microPort: number) => {
 
   app.use(async (req, res, next) => {
     // 1. 获取主应用资源
+
     const { body } = await request(
-      "https://www.unpkg.com/nbs-main-app@0.0.4/dist/index.html"
+      "https://www.unpkg.com/nbs-main-app@0.0.5-beta.1/dist/index.html"
     );
     let html = await body.text();
     html = processHtmlPath(html);
     console.log("html", html);
     // 2. 获取SaaS信息并注入html
     const mf = fs.readJSONSync(path.join(process.cwd(), "manifest.json"));
+    const pkg = fs.readJSONSync(path.join(process.cwd(), "package.json"));
 
     let name: string = mf.name;
     if (name.startsWith("lang.")) {
@@ -48,6 +51,8 @@ export const BFF = async (mainPort: number, microPort: number) => {
     const _NBS = {
       app: {
         name: name,
+        id: pkg.name,
+        baseroute: `/apps/${uid()}`,
         url: `http://localhost:${microPort}`,
       },
     };

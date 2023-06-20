@@ -9,12 +9,10 @@ import portfinder from "portfinder";
 import { consola } from "consola";
 
 const startServer = async () => {
-  const mf: any = fs.readJSONSync(path.join(process.cwd(), "manifest.json"));
+  const mf = fs.readJSONSync(path.join(process.cwd(), "manifest.json"));
+  const pkg = fs.readJSONSync(path.join(process.cwd(), "package.json"));
 
   if (mf.type === "main-react-ts") {
-    // 2. 获取SaaS信息并注入html
-    const mf = fs.readJSONSync(path.join(process.cwd(), "manifest.json"));
-
     let name: string = mf.name;
     if (name.startsWith("lang.")) {
       name = mf._locales["zh"][name.replace("lang.", "")];
@@ -22,6 +20,8 @@ const startServer = async () => {
     const _NBS = {
       app: {
         name: name,
+        id: pkg.name,
+        baseroute: "",
         url: `http://localhost:`,
       },
     };

@@ -21,7 +21,7 @@ export const processHtmlPath = (html: string) => {
       }
       const newUrl = new URL(
         origin,
-        `https://www.unpkg.com/nbs-main-app@0.0.4/dist/`
+        `https://www.unpkg.com/nbs-main-app@0.0.5-beta.1/dist/`
       ).href;
       $(this).attr(attr, newUrl);
     });

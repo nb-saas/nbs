@@ -1,6 +1,6 @@
 {
   "name": "@nbss/nbs",
-  "version": "0.0.1-beta.5",
+  "version": "0.0.1-beta.7",
   "description": "",
   "scripts": {
     "build": "unbuild && node scripts/copyTemplate.js",
@@ -54,6 +54,7 @@
     "open": "8.4.0",
     "portfinder": "^1.0.32",
     "prompts": "^2.4.2",
+    "uid": "^2.0.2",
     "undici": "^5.22.1",
     "vite": "^4.3.9",
     "vite-plugin-html": "^3.2.0"

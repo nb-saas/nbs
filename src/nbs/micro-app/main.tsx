@@ -7,11 +7,13 @@ import ReactDOM from "react-dom/client";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import "./index.css";
 import "./lang";
+import { microProps } from "./index";
 
 const routeFiles = (import.meta as any).glob("../../src/pages/**/index.tsx", {
   eager: true,
 });
 console.log("routeFiles", routeFiles);
+console.log("microProps", microProps);
 
 const router = createBrowserRouter(
   Object.keys(routeFiles)
@@ -26,7 +28,8 @@ const router = createBrowserRouter(
         path: path === "home" || path === "index.tsx" ? "/" : `${path}`,
         element: <Page />,
       };
-    })
+    }),
+  { basename: microProps.baseroute }
 );
 ReactDOM.createRoot(document.getElementById("root") as HTMLElement).render(
   <React.StrictMode>
