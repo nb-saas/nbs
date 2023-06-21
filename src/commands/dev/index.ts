@@ -74,7 +74,6 @@ const startServer = async () => {
       },
     });
     await server.listen();
-    server.printUrls();
 
     const mainPort = await portfinder.getPortPromise({ port: 9000 });
     consola.info("mainPort:", mainPort);

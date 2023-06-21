@@ -10,3 +10,4 @@ types
 *.env*
 nbs-main-app
 nbs-micro-app
+nbs-iot-account

@@ -3,6 +3,6 @@
 // DO NOT CHANGE IT MANUALLY!
 export const microProps: { nbsName: string; baseroute: string } = {
   nbsName: window.__MICRO_APP_NAME__,
-  baseroute: __MICRO_APP_BASE_ROUTE__,
+  baseroute: window.__MICRO_APP_BASE_ROUTE__,
   ...window?.microApp?.getData(),
 };

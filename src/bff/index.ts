@@ -35,7 +35,7 @@ export const BFF = async (mainPort: number, microPort: number) => {
     // 1. 获取主应用资源
 
     const { body } = await request(
-      "https://www.unpkg.com/nbs-main-app@0.0.5-beta.1/dist/index.html"
+      "https://www.unpkg.com/nbs-main-app@0.0.5-beta.2/dist/index.html"
     );
     let html = await body.text();
     html = processHtmlPath(html);
