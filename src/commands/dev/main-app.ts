@@ -2,8 +2,15 @@ import { createServer } from "vite";
 import react from "@vitejs/plugin-react";
 import { createHtmlPlugin } from "vite-plugin-html";
 import path from "path";
+import { DEFAULT_CONFIG_FILE, type IConfig } from "../../nbsrc";
 
 export const mainDev = async () => {
+  const config: IConfig = require(path.join(
+    __dirname,
+    DEFAULT_CONFIG_FILE
+  )).default;
+  console.log(".nbsrc");
+
   const server = await createServer({
     configFile: false,
     plugins: [
@@ -28,7 +35,18 @@ export const mainDev = async () => {
         nbs: path.resolve(process.cwd(), "src/.nbs"),
       },
     },
-    server: {},
+    server: {
+      proxy: {
+        "/open-api": {
+          target: config.debuggerConfig.target,
+          changeOrigin: true,
+        },
+        "/m-api": {
+          target: config.debuggerConfig.target,
+          changeOrigin: true,
+        },
+      },
+    },
   });
   await server.listen();
 

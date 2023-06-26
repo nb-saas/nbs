@@ -4,12 +4,17 @@ import { consola } from "consola";
 import { apiMock } from "./api-mock";
 import { apiProxy } from "./api-proxy";
 import { staticProxy } from "./static-proxy";
+import { type IConfig } from "../nbsrc";
 
-export const BFF = async (mainPort: number, microPort: number) => {
+export const BFF = async (
+  mainPort: number,
+  microPort: number,
+  config: IConfig
+) => {
   const app = express();
 
   apiMock(app);
-  apiProxy(app);
+  apiProxy(app, config);
   staticProxy(app, microPort);
 
   app.listen(mainPort, () => {

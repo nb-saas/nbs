@@ -2,6 +2,8 @@ import { cac } from "cac";
 import { version } from "../package.json";
 import { dev, build, preview, createApp } from "./commands";
 
+export { defineConfig } from "./nbsrc";
+
 const cli = cac("nbs");
 
 cli.command("", "start dev server").action(async (files, options) => {

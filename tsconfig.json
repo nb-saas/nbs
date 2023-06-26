@@ -7,7 +7,7 @@
     "strict": true,
     "resolveJsonModule": true
   },
-  "include": ["src"],
+  "include": ["src", "bff"],
   "exclude": ["src/nbs/main-app", "src/nbs/micro-app"],
 
   "ts-node": {

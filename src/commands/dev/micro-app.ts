@@ -5,9 +5,16 @@ import portfinder from "portfinder";
 import path from "path";
 import { consola } from "consola";
 import { BFF } from "../../bff";
+import { DEFAULT_CONFIG_FILE, type IConfig } from "../../nbsrc";
 
 export const microDev = async () => {
   const microPort = await portfinder.getPortPromise({ port: 5000 });
+
+  const config: IConfig = require(path.join(
+    __dirname,
+    DEFAULT_CONFIG_FILE
+  )).default;
+  console.log(".nbsrc");
 
   const server = await createServer({
     configFile: false,
@@ -30,5 +37,5 @@ export const microDev = async () => {
   consola.info("mainPort:", mainPort);
   consola.info("microPort:", microPort);
 
-  await BFF(mainPort, microPort);
+  await BFF(mainPort, microPort, config);
 };
