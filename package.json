@@ -55,6 +55,7 @@
     "get-port": "^7.0.0",
     "http-proxy-middleware": "^2.0.6",
     "open": "8.4.0",
+    "path-to-regexp": "^6.2.1",
     "portfinder": "^1.0.32",
     "prompts": "^2.4.2",
     "qs": "^6.11.2",
