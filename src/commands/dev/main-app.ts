@@ -41,7 +41,7 @@ export const mainDev = async () => {
           target: config.debuggerConfig.target,
           changeOrigin: true,
         },
-        "/m-api": {
+        "/nbs-api": {
           target: config.debuggerConfig.target,
           changeOrigin: true,
         },

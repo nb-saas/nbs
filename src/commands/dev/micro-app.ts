@@ -8,6 +8,7 @@ import { BFF } from "../../bff";
 import { DEFAULT_CONFIG_FILE, type IConfig } from "../../nbsrc";
 
 export const microDev = async () => {
+  const mainPort = await portfinder.getPortPromise({ port: 9000 });
   const microPort = await portfinder.getPortPromise({ port: 5000 });
 
   const config: IConfig = require(path.join(
@@ -28,11 +29,12 @@ export const microDev = async () => {
     },
     server: {
       port: microPort,
+      proxy: {
+        "/open-api": `http://localhost:${mainPort}`,
+      },
     },
   });
   await server.listen();
-
-  const mainPort = await portfinder.getPortPromise({ port: 9000 });
 
   consola.info("mainPort:", mainPort);
   consola.info("microPort:", microPort);
