@@ -16,6 +16,9 @@ export const apiProxy = (app: express.Application, config: IConfig) => {
   if (fs.existsSync(`${process.cwd()}/bff`)) {
     app.use("/open-api", vmRouter());
   } else {
-    app.use("/open-api", createProxyMiddleware({ target, changeOrigin: true }));
+    // app.use("/open-api", createProxyMiddleware({ target, changeOrigin: true }));
+    app.use("/open-api", (req, res, next) => {
+      console.log("xxxx", req.url);
+    });
   }
 };
